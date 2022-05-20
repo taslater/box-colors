@@ -34,7 +34,10 @@ function overTile(tile) {
 
   const droppingKeyframes = [
     { transform: '' },
-    { transform: `translate(${offsetX}px, 150vh) rotate(${finalAngle}deg)` }
+    {
+      transform: `translate(${offsetX}px, 150vh) rotate(${finalAngle}deg)`,
+      boxShadow: `20px 20px 20px black`
+    }
   ]
 
   const droppingOptions = {
