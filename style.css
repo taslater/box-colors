@@ -1,0 +1,53 @@
+:root {
+  /* --tile-dim: calc(10vw - 10px); */
+  /* --tile-dim: calc(100vw / calc(round(100vw / 100px))); */
+  --tile-dim: 100px;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: gray;
+  touch-action: none;
+}
+
+#tile-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  width: fit-content;
+  justify-content: center;
+  align-content: flex-start;
+  height: 100vh;
+  overflow: hidden;
+  touch-action: none;
+}
+
+.tile {
+  /* position: relative; */
+  /* width: 100px; */
+  width: var(--tile-dim);
+  /* height: 100px; */
+  height: var(--tile-dim);
+  flex-basis: auto;
+  background-color: gray;
+  margin: 0;
+  z-index: 0;
+}
+
+.tile.over {
+  position: absolute;
+  /* top: 0;
+  left: 0; */
+  /* background-color: red; */
+  /* z-index: 100; */
+  /* animation: drop 1s ease-in; */
+}
+
+/* @keyframes drop {
+  100% {
+    transform: translateY(150vh) rotate(360deg);
+  }
+} */
