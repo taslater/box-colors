@@ -35,6 +35,7 @@ body {
   background-color: gray;
   margin: 0;
   z-index: 0;
+  user-select: none;
 }
 
 .tile.over {
