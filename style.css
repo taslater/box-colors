@@ -11,6 +11,7 @@ body {
   box-sizing: border-box;
   background-color: gray;
   touch-action: none;
+  overflow:hidden;
 }
 
 #tile-container {
@@ -40,7 +41,7 @@ body {
 
 .tile.over {
   position: absolute;
-  box-shadow: 0 0 0 black;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0.8);
   /* top: 0;
   left: 0; */
   /* background-color: red; */
