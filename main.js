@@ -5,14 +5,12 @@ const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.loaded = true
-
     }
     else if (entry.target.loaded) {
       entry.target.remove()
     }
   })
 })
-
 
 function overTile(tile) {
   const rect = tile.getBoundingClientRect()
@@ -42,8 +40,7 @@ function overTile(tile) {
 
   const droppingOptions = {
     duration: 1000,
-    easing: 'ease-in',
-    // iterations: 1,
+    easing: 'ease-in'
   }
 
   document.body.appendChild(overTile)
@@ -67,15 +64,6 @@ window.addEventListener("resize", () => {
   setTiles()
   // debounce(setTileDim, 500)
 })
-
-
-// function setTileDim() {
-//   const targetDim = 100
-//   const windowWidth = window.innerWidth
-//   const tilesPerRow = Math.max(1, Math.round(windowWidth / targetDim))
-//   const tileDim = Math.floor(windowWidth / tilesPerRow)
-//   document.documentElement.style.setProperty('--tile-dim', `${tileDim}px`);
-// }
 
 function setTiles() {
   const targetDim = 100
