@@ -31,7 +31,6 @@ function overTile(tile) {
   const offsetX = Math.floor(400 * Math.random()) - 200
 
   const droppingKeyframes = [
-    { transform: '' },
     {
       transform: `translate(${offsetX}px, 150vh) rotate(${finalAngle}deg)`,
       boxShadow: `20px 20px 20px black`
