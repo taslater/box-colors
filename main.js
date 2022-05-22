@@ -5,14 +5,12 @@ const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.loaded = true
-
     }
     else if (entry.target.loaded) {
       entry.target.remove()
     }
   })
 })
-
 
 function overTile(tile) {
   const rect = tile.getBoundingClientRect()
@@ -46,32 +44,22 @@ function overTile(tile) {
   const offsetX = Math.floor(400 * Math.random()) - 200
 
   const droppingKeyframes = [
-    { transform: '',
-  },
-
     {
       transform: `translate(${offsetX}px, 150vh) rotate(${finalAngle}deg)`,
-      // boxShadow: `100px 100px 0px rgba(0, 0, 0, 1)`
     }
   ];
 
   const shadowKeyframes = [
-    { transform: '',
-    filter: 'blur(0px)',
-    backgroundColor: 'rgba(0,0,0,.8)'
-  },
-
     {
-      transform: `translate(${offsetX+20}px, 150vh) rotate(${finalAngle}deg)`,
+      transform: `translate(${offsetX+20}px, 160vh) rotate(${finalAngle}deg)`,
       filter: 'blur(10px)',
       backgroundColor: 'rgba(0,0,0,0.1)'
     }
   ]
 
   const droppingOptions = {
-    duration: 1200,
-    easing: 'ease-in',
-    // iterations: 1,
+    duration: 1000,
+    easing: 'ease-in'
   }
 
   document.body.appendChild(shadowTile)
@@ -97,15 +85,6 @@ window.addEventListener("resize", () => {
   setTiles()
   // debounce(setTileDim, 500)
 })
-
-
-// function setTileDim() {
-//   const targetDim = 100
-//   const windowWidth = window.innerWidth
-//   const tilesPerRow = Math.max(1, Math.round(windowWidth / targetDim))
-//   const tileDim = Math.floor(windowWidth / tilesPerRow)
-//   document.documentElement.style.setProperty('--tile-dim', `${tileDim}px`);
-// }
 
 function setTiles() {
   const targetDim = 100
