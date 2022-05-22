@@ -35,36 +35,30 @@ function overTile(tile) {
   shadowTile.style.width = `${Math.round(rect.width)}px`
   shadowTile.style.height = `${Math.round(rect.height)}px`
   shadowTile.style.zIndex = currentZIndex
+  currentZIndex--
+  if (currentZIndex == 0) currentZIndex = maxZIndex
 
-  const boxXCenter = rect.left + rect.width / 2
-  const windowXCenter = document.documentElement.clientWidth / 2
-  const initialOffset = (windowXCenter - boxXCenter) * -0.5;
-  const finalOffset = document.documentElement.clientWidth - boxXCenter;
-  console.log(`${initialOffset} => ${finalOffset}`);
-  //currentZIndex--
-  //if (currentZIndex == 0) currentZIndex = maxZIndex
-  // setEltColorToRand(tile)
   observer.observe(shadowTile)
 
   const finalAngle = Math.floor(720 * Math.random()) - 360
-  const offsetX = 0 //Math.floor(400 * Math.random()) - 200
+  const offsetX = Math.floor(400 * Math.random()) - 200
 
   const droppingKeyframes = [
     {
-      transform: `translate(${offsetX}px, 150vh) rotate(${finalAngle}deg)`,
+      transform: `translate(${offsetX}px, calc(100vh + ${rect.height}px * 2)) rotate(${finalAngle}deg)`,
     }
   ];
 
   const shadowKeyframes = [
     {
-      transform: `translate(${initialOffset}px, 150vh) rotate(${finalAngle}deg)`,
-      // filter: 'blur(30px)',
-      // backgroundColor: 'rgba(0,0,0,0.5)'
+      transform: `translate(calc((40vw - ${rect.left}px) * -0.05 + ${offsetX}px), calc(100vh + ${rect.height}px * 2.2)) rotate(${finalAngle}deg)`,
+       filter: 'blur(15px)',
+       backgroundColor: 'rgba(0,0,0,0.1)'
     }
   ]
 
   const droppingOptions = {
-    duration: 5000,
+    duration: 3000,
     easing: 'ease-in'
   }
 
