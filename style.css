@@ -31,5 +31,8 @@ body {
 
 .tile.over {
   position: absolute;
-  box-shadow: 0 0 0 black;
+}
+
+.shade {
+  background-color: rgba(0, 0, 0, .6);
 }

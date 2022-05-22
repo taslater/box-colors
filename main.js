@@ -27,22 +27,44 @@ function overTile(tile) {
   setEltColorToRand(tile)
   observer.observe(overTile)
 
+  const shadowTile = document.createElement("div")
+  shadowTile.className = "tile over shade"
+  shadowTile.style.backgroundColor = "black"
+  shadowTile.style.left = `${Math.round(rect.left)}px`
+  shadowTile.style.top = `${Math.round(rect.top)}px`
+  shadowTile.style.width = `${Math.round(rect.width)}px`
+  shadowTile.style.height = `${Math.round(rect.height)}px`
+  shadowTile.style.zIndex = currentZIndex
+  currentZIndex--
+  if (currentZIndex == 0) currentZIndex = maxZIndex
+
+  observer.observe(shadowTile)
+
   const finalAngle = Math.floor(720 * Math.random()) - 360
   const offsetX = Math.floor(400 * Math.random()) - 200
 
   const droppingKeyframes = [
     {
-      transform: `translate(${offsetX}px, 150vh) rotate(${finalAngle}deg)`,
-      boxShadow: `20px 20px 20px black`
+      transform: `translate(${offsetX}px, calc(100vh + ${rect.height}px * 2)) rotate(${finalAngle}deg)`,
+    }
+  ];
+
+  const shadowKeyframes = [
+    {
+      transform: `translate(calc((40vw - ${rect.left}px) * -0.05 + ${offsetX}px), calc(100vh + ${rect.height}px * 2.2)) rotate(${finalAngle}deg)`,
+       filter: 'blur(15px)',
+       backgroundColor: 'rgba(0,0,0,0.1)'
     }
   ]
 
   const droppingOptions = {
-    duration: 1000,
+    duration: 3000,
     easing: 'ease-in'
   }
 
+  document.body.appendChild(shadowTile)
   document.body.appendChild(overTile)
+  shadowTile.animate(shadowKeyframes, droppingOptions);
   overTile.animate(droppingKeyframes, droppingOptions);
 }
 
