@@ -35,13 +35,19 @@ function overTile(tile) {
   shadowTile.style.width = `${Math.round(rect.width)}px`
   shadowTile.style.height = `${Math.round(rect.height)}px`
   shadowTile.style.zIndex = currentZIndex
+
+  const boxXCenter = rect.left + rect.width / 2
+  const windowXCenter = document.documentElement.clientWidth / 2
+  const initialOffset = (windowXCenter - boxXCenter) * -0.5;
+  const finalOffset = document.documentElement.clientWidth - boxXCenter;
+  console.log(`${initialOffset} => ${finalOffset}`);
   //currentZIndex--
   //if (currentZIndex == 0) currentZIndex = maxZIndex
   // setEltColorToRand(tile)
   observer.observe(shadowTile)
 
   const finalAngle = Math.floor(720 * Math.random()) - 360
-  const offsetX = Math.floor(400 * Math.random()) - 200
+  const offsetX = 0 //Math.floor(400 * Math.random()) - 200
 
   const droppingKeyframes = [
     {
@@ -51,14 +57,14 @@ function overTile(tile) {
 
   const shadowKeyframes = [
     {
-      transform: `translate(${offsetX+20}px, 160vh) rotate(${finalAngle}deg)`,
-      filter: 'blur(10px)',
-      backgroundColor: 'rgba(0,0,0,0.1)'
+      transform: `translate(${initialOffset}px, 150vh) rotate(${finalAngle}deg)`,
+      // filter: 'blur(30px)',
+      // backgroundColor: 'rgba(0,0,0,0.5)'
     }
   ]
 
   const droppingOptions = {
-    duration: 1000,
+    duration: 5000,
     easing: 'ease-in'
   }
 
